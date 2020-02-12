@@ -105,12 +105,12 @@
   						<div class="col-sm-6">
   							<label for="phones">*Телефоны</label>
     						<input type="text" name="phones" class="form-control" id="phones" placeholder="+7 123 4567890, +7 321 0987654" required>
-    						<small id="emailHelp" class="form-text text-muted">Несколько телефонов указать через запятую.</small>
+    						<small id="emailHelp" class="form-text text-muted">Несколько телефонов укажите через запятую</small>
   						</div>
   						<div class="col-sm-6">
   							<label for="emails">*E-mails</label>
     						<input type="text" name="emails" class="form-control" id="emails" placeholder="ivanov@ivan.ru, ivan@ivanos.ru" required>
-    						<small id="emailHelp" class="form-text text-muted">Несколько e-mail'ов указать через запятую.</small>
+    						<small id="emailHelp" class="form-text text-muted">Несколько e-mail'ов укажите через запятую</small>
   						</div>
   					</div>
   					</br>

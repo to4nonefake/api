@@ -31,6 +31,7 @@ class Api {
 		if ($response->result->handle != null){
 			return 'Домен успешно создан!';
 		}
+		$this->LogPrint('Ошибка создания домена.',$response->error->message);
 		return 'Ошибка создания домена!</br>'.$response->error->message;
 	}
 
@@ -59,6 +60,7 @@ class Api {
 				]
 			]
 		];
+		
 		$response = $this->Execute($method, $params);
 
 		if ($response->result->handle != null){
@@ -70,6 +72,7 @@ class Api {
 			}
 			
 		}
+		$this->LogPrint('Ошибка создания пользователя.',$response->error->message);
 		return 'Ошибка создания пользователя!</br>'.$response->error->message;
 	}
 
@@ -84,5 +87,10 @@ class Api {
 		curl_close($ch);
 		$response = json_decode($response, false);
 		return $response;
+	}
+
+	function LogPrint($message, $error){
+		$date = date('Y/m/d H:i:s');
+		error_log($date.'. '.$message.' Сообщение: '.$error."\n", 3, 'logs/errors.log');
 	}
 }

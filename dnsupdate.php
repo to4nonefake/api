@@ -34,40 +34,106 @@
 				<form class="w-100" action="dnsupdate.php" method="get">
 
 					<div class="row">
-  						<div class="col-sm-4">
-    						<label for="clientId">*Идентификатор клиента</label>
-    						<input type="number" name="clientId" class="form-control" id="clientId" placeholder="404" required>
+  						<div class="col-sm-3">
+    						<h5 align="left">Primary (master) server</h5>
+    						<small align="left" id="primaryServer" class="form-text text-muted">Имя первичного сервера DNS</small>
   						</div>
   						<div class="col-sm">
-    						<label for="donainName">*Имя домена</label>
-    						<input type="text" name="donainName" class="form-control" id="donainName" placeholder="example.ru" required>
-    						<small id="emailHelp" class="form-text text-muted">domain.ru или domain.su или домен.рф или xn--d1acufc.xn--p1ai</small>
+    						<input type="text" name="primaryServer" class="form-control" id="primaryServer" placeholder="example.ru." required>
   						</div>
   					</div>
+  					</br>
 
+  					<div class="row">
+  						<div class="col-sm-3">
+    						<h5 align="left">Responsible address</h5>
+    						<small align="left" id="responsibleAddress" class="form-text text-muted">E-mail администратора зоны</small>
+  						</div>
+  						<div class="col-sm">
+    						<input type="text" name="responsibleAddress" class="form-control" id="responsibleAddress" placeholder="hostmaster.example.ru." required>
+  						</div>
+  					</div>
+  					</br>
+
+  					<div class="row">
+  						<div class="col-sm-3">
+    						<h5 align="left">Serial</h5>
+    						<small align="left" id="serial" class="form-text text-muted">Серийный номер зоны</small>
+  						</div>
+  						<div class="col-sm">
+    						<input type="text" name="serial" class="form-control" id="serial" placeholder="2020021200" required>
+  						</div>
+  					</div>
   					</br>
 
 					<div class="row">
-  						<div class="col-sm">
-    						<label for="period">Период регистрации</label>
-    						<input type="number" name="period" class="form-control" id="period" placeholder="1">
-    						<small id="emailHelp" class="form-text text-muted">Без указания считается как 1 год</small>
+  						<div class="col-sm-3">
+    						<h5 align="left">Refresh</h5>
+    						<small align="left" id="serial" class="form-text text-muted">Интервал между обновлениями данных зоны</small>
   						</div>
   						<div class="col-sm">
-    						<label for="vendorId">Идентификатор поставщика</label>
-    						<input type="number" name="vendorId" class="form-control" id="vendorId">
-  						</div>
-  						<div class="col-sm">
-    						<label for="comment">Комментарий</label>
-    						<input type="text" name="comment" class="form-control" id="comment">
+    						<input type="text" name="serial" class="form-control" id="serial" placeholder="10800" required>
   						</div>
   					</div>
-
   					</br>
-					<small id="emailHelp" class="form-text text-muted">* - обязательные для заполнения поля</small>
-					</br>
-  					<button type="submit" class="btn btn-primary">Зарегистрировать</button>
-  					<a href="index.php" class="btn btn-light"><img src="https://img.icons8.com/nolan/64/available-updates.png" width="30" height="30" alt="logo"></a>
+
+  					<div class="row">
+  						<div class="col-sm-3">
+    						<h5 align="left">Retry</h5>
+    						<small align="left" id="serial" class="form-text text-muted">Интервал между повторением попыток обновления</small>
+  						</div>
+  						<div class="col-sm">
+    						<input type="text" name="serial" class="form-control" id="serial" placeholder="3600" required>
+  						</div>
+  					</div>
+  					</br>
+
+  					<div class="row">
+  						<div class="col-sm-3">
+    						<h5 align="left">Expire</h5>
+    						<small align="left" id="serial" class="form-text text-muted">Время актуальности данных на вторичных серверах DNS</small>
+  						</div>
+  						<div class="col-sm">
+    						<input type="text" name="serial" class="form-control" id="serial" placeholder="604800" required>
+  						</div>
+  					</div>
+  					</br>
+
+  					<div class="row">
+  						<div class="col-sm-3">
+    						<h5 align="left">Negative TTL</h5>
+    						<small align="left" id="serial" class="form-text text-muted">Время кэширования отрицательного ответа (NXDOMAIN)</small>
+  						</div>
+  						<div class="col-sm">
+    						<input type="text" name="serial" class="form-control" id="serial" placeholder="3600" required>
+  						</div>
+  					</div>
+  					</br>
+
+  					<div class="row">
+  						<div class="col-sm-3">
+    						<h5 align="left">Default TTL</h5>
+    						<small align="left" id="serial" class="form-text text-muted">Время кэширования положительного ответа (NOERROR) по умолчанию</small>
+  						</div>
+  						<div class="col-sm">
+    						<input type="text" name="serial" class="form-control" id="serial" placeholder="3600" required>
+  						</div>
+  					</div>
+  					</br>
+
+  					<div class="row">
+  						<div class="col-sm-3">
+    						<h5 align="left">TTL</h5>
+    						<small align="left" id="serial" class="form-text text-muted">Время кэширования данных записи SOA</small>
+  						</div>
+  						<div class="col-sm">
+    						<input type="text" name="serial" class="form-control" id="serial" placeholder="7200" required>
+  						</div>
+  					</div>
+  					</br>
+  					
+  					<button type="submit" class="btn btn-primary">Изменить</button>
+  					<a href="dnsupdate.php" class="btn btn-light"><img src="https://img.icons8.com/nolan/64/available-updates.png" width="30" height="30" alt="logo"></a>
 				</form>
 			</div>			
 		</div>
@@ -79,16 +145,6 @@
 				<div class="col">
 					<?php 
 						require_once 'api_class.php';
-						if(isset($_GET['clientId']) && isset($_GET['donainName'])){
-							$clientId = $_GET['clientId'];
-							$donainName = $_GET['donainName'];
-							$period; if (empty($_GET['period'])){$period = 1;} else {$period = $_GET['period'];};
-							$vendorId; if (empty($_GET['vendorId'])){$vendorId = null;} else {$vendorId = $_GET['vendorId'];};
-							$comment; if (empty($_GET['comment'])){$comment = null;} else {$comment = $_GET['comment'];};
-							$CreateById = new Api;
-							$response = $CreateById->DomainCreateById($clientId, $donainName, $vendorId, $period, $comment);
-							echo "$response";
-						}
 					?>
 				</div>
 			</div>

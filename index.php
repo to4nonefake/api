@@ -51,7 +51,7 @@
   						<div class="col-sm">
     						<label for="period">Период регистрации</label>
     						<input type="number" name="period" class="form-control" id="period" placeholder="1">
-    						<small id="emailHelp" class="form-text text-muted">Без указания считается как 1 год</small>
+    						<small id="emailHelp" class="form-text text-muted">По стандарту 1 год</small>
   						</div>
   						<div class="col-sm">
     						<label for="vendorId">Идентификатор поставщика</label>
