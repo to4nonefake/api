@@ -3,6 +3,7 @@ class Api {
 
 	private $url = 'https://vrdemo.virtreg.ru/vr-api';
 	private $auth = array('login' => 'demo', 'password' => 'demo');
+	private $log;
 
 	function GetInfo($id){
 		$method = 'domainInfo';
@@ -31,7 +32,7 @@ class Api {
 		if ($response->result->handle != null){
 			return 'Домен успешно создан!';
 		}
-		$this->LogPrint('Ошибка создания домена.',$response->error->message);
+		$this->log->LogPrint('Ошибка создания домена.',$response->error->message);
 		return 'Ошибка создания домена!</br>'.$response->error->message;
 	}
 
@@ -72,7 +73,7 @@ class Api {
 			}
 			
 		}
-		$this->LogPrint('Ошибка создания пользователя.',$response->error->message);
+		$this->log->LogPrint('Ошибка создания пользователя.',$response->error->message);
 		return 'Ошибка создания пользователя!</br>'.$response->error->message;
 	}
 
@@ -89,8 +90,8 @@ class Api {
 		return $response;
 	}
 
-	function LogPrint($message, $error){
-		$date = date('Y/m/d H:i:s');
-		error_log($date.'. '.$message.' Сообщение: '.$error."\n", 3, 'logs/errors.log');
+	function __construct() {
+		require_once 'log_class.php';
+		$this->log = new LogClass;
 	}
 }
