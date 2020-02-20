@@ -77,6 +77,27 @@ class Api {
 		return 'Ошибка создания пользователя!</br>'.$response->error->message;
 	}
 
+	function DNSChange($id, $clientId, $nservers, $nservers2){
+		$method = 'domainUpdate';
+		$params = [
+			'auth' => $this->auth,
+			'id'=>$id,
+			'clientId'=> $clientId,
+			'domain'=>[
+				'delegated'=>true,
+            	'nservers'=>[$nservers, $nservers2]
+            ]
+        ];
+
+		$response = $this->Execute($method, $params);
+
+		if ($response->result->handle != null){
+			return 'Домен успешно делегирован!';
+		}
+		$this->log->LogPrint('Ошибка назначения домена.',$response->error->message);
+		return 'Ошибка назначения домена!</br>'.$response->error->message;
+	}
+
 	function Execute($method, $params){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

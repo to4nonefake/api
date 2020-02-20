@@ -34,100 +34,39 @@
 				<form class="w-100" action="dnsupdate.php" method="get">
 
 					<div class="row">
-  						<div class="col-sm-3">
-    						<h5 align="left">Primary (master) server</h5>
-    						<small align="left" id="primaryServer" class="form-text text-muted">Имя первичного сервера DNS</small>
+  						<div class="col-sm-6">
+    						<label for="id">*ID</label>
+    						<input type="text" name="id" class="form-control" id="id" placeholder="123" required>
   						</div>
-  						<div class="col-sm">
-    						<input type="text" name="primaryServer" class="form-control" id="primaryServer" placeholder="example.ru." required>
-  						</div>
-  					</div>
-  					</br>
-
-  					<div class="row">
-  						<div class="col-sm-3">
-    						<h5 align="left">Responsible address</h5>
-    						<small align="left" id="responsibleAddress" class="form-text text-muted">E-mail администратора зоны</small>
-  						</div>
-  						<div class="col-sm">
-    						<input type="text" name="responsibleAddress" class="form-control" id="responsibleAddress" placeholder="hostmaster.example.ru." required>
+  						<div class="col-sm-6">
+  							<label for="clientID">*Client Id</label>
+ 							<input type="text" name="clientID" class="form-control" id="clientID" placeholder="321" required>
   						</div>
   					</div>
   					</br>
 
   					<div class="row">
-  						<div class="col-sm-3">
-    						<h5 align="left">Serial</h5>
-    						<small align="left" id="serial" class="form-text text-muted">Серийный номер зоны</small>
+  						<div class="col-sm-6">
+    						<label for="domainName">*Доменное имя name-сервера</label>
+    						<input type="text" name="domainName" class="form-control" id="domainName" placeholder="ns1.domain.ru" required>
   						</div>
-  						<div class="col-sm">
-    						<input type="text" name="serial" class="form-control" id="serial" placeholder="2020021200" required>
-  						</div>
-  					</div>
-  					</br>
-
-					<div class="row">
-  						<div class="col-sm-3">
-    						<h5 align="left">Refresh</h5>
-    						<small align="left" id="serial" class="form-text text-muted">Интервал между обновлениями данных зоны</small>
-  						</div>
-  						<div class="col-sm">
-    						<input type="text" name="serial" class="form-control" id="serial" placeholder="10800" required>
+  						<div class="col-sm-6">
+    						<label for="domainName2">*Доменное имя name-сервера</label>
+    						<input type="text" name="domainName2" class="form-control" id="domainName2" placeholder="ns1.domain.ru" required>
   						</div>
   					</div>
   					</br>
 
   					<div class="row">
-  						<div class="col-sm-3">
-    						<h5 align="left">Retry</h5>
-    						<small align="left" id="serial" class="form-text text-muted">Интервал между повторением попыток обновления</small>
+  						<div class="col-sm-6">
+    						<label for="domainAddress">*Адреса name-сервера</label>
+    						<input type="text" name="domainAddress" class="form-control" id="domainAddress" placeholder="100.200.5.1 100.200.5.2">
+    						<small id="domainAddressHelp" class="form-text text-muted">Несколько адресов укажите через пробел</small>
   						</div>
-  						<div class="col-sm">
-    						<input type="text" name="serial" class="form-control" id="serial" placeholder="3600" required>
-  						</div>
-  					</div>
-  					</br>
-
-  					<div class="row">
-  						<div class="col-sm-3">
-    						<h5 align="left">Expire</h5>
-    						<small align="left" id="serial" class="form-text text-muted">Время актуальности данных на вторичных серверах DNS</small>
-  						</div>
-  						<div class="col-sm">
-    						<input type="text" name="serial" class="form-control" id="serial" placeholder="604800" required>
-  						</div>
-  					</div>
-  					</br>
-
-  					<div class="row">
-  						<div class="col-sm-3">
-    						<h5 align="left">Negative TTL</h5>
-    						<small align="left" id="serial" class="form-text text-muted">Время кэширования отрицательного ответа (NXDOMAIN)</small>
-  						</div>
-  						<div class="col-sm">
-    						<input type="text" name="serial" class="form-control" id="serial" placeholder="3600" required>
-  						</div>
-  					</div>
-  					</br>
-
-  					<div class="row">
-  						<div class="col-sm-3">
-    						<h5 align="left">Default TTL</h5>
-    						<small align="left" id="serial" class="form-text text-muted">Время кэширования положительного ответа (NOERROR) по умолчанию</small>
-  						</div>
-  						<div class="col-sm">
-    						<input type="text" name="serial" class="form-control" id="serial" placeholder="3600" required>
-  						</div>
-  					</div>
-  					</br>
-
-  					<div class="row">
-  						<div class="col-sm-3">
-    						<h5 align="left">TTL</h5>
-    						<small align="left" id="serial" class="form-text text-muted">Время кэширования данных записи SOA</small>
-  						</div>
-  						<div class="col-sm">
-    						<input type="text" name="serial" class="form-control" id="serial" placeholder="7200" required>
+  						<div class="col-sm-6">
+    						<label for="domainAddress2">*Адреса name-сервера</label>
+    						<input type="text" name="domainAddress2" class="form-control" id="domainAddress2" placeholder="100.200.5.1 100.200.5.2">
+    						<small id="domainAddressHelp" class="form-text text-muted">Несколько адресов укажите через пробел</small>
   						</div>
   					</div>
   					</br>
@@ -145,6 +84,11 @@
 				<div class="col">
 					<?php 
 						require_once 'api_class.php';
+						if (isset($_GET['id'])){
+							$api = new Api;
+							$response = $api->DNSChange($_GET['id'], $_GET['clientID'], $_GET['domainName'].' '.$_GET['domainAddress'], $_GET['domainName2'].' '.$_GET['domainAddress2']);
+							echo "$response";
+						}
 					?>
 				</div>
 			</div>
